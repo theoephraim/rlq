@@ -1,0 +1,17 @@
+Remaining items
+
+
+- How to deal with disconnected clients / active job timeouts
+  - need to detect them, move them back into waiting state
+  - keydb team is going to add "run script on expire" functionality, but no estimated timeline
+    (https://github.com/JohnSully/KeyDB/issues/254)
+- Cleanup / archiving of successful jobs
+  - remove from success set, delete job info
+- Add functionality to retry buried jobs
+  - move back to waiting set(s)
+- Add functionality to archive buried jobs
+  - remove from buried list, delete job info, delete job rules from RLQ--JOB_LIMITS hash
+
+
+Ideas / maybe
+- use 1s cache for limits that have reached their capacity?

@@ -1,0 +1,10 @@
+version: '2'
+services:
+  keydb-modjs:
+    image: eqalpha/modjs:keydb-latest
+    ports:
+      # expose this on a different port to avoid conflict with any locally running redis
+      - "6398:6379"
+    volumes:
+      - ./dist:/scripts
+    command: keydb-server /etc/keydb/keydb.conf --loadmodule /usr/lib/keydb/modules/modjs.so /scripts/keydb-startup.js

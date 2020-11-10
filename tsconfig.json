@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2019",
+    "lib": ["ES6"],
+    "allowJs": false,
+    "moduleResolution": "node",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "isolatedModules": false,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": false,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "plugins": [
+      { "transform": "./lib/ts-transformers/expand-design-metadata.ts", "type": "raw" }
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
