@@ -20,7 +20,7 @@ function getUser() {
   return {
     userId,
     workspaceId: userId % 10, // 10 workspaces
-    accountId: Math.ceil(Math.random() * 5), // 5 accounts
+    accountId: Math.ceil(Math.random() * 20), // 20 accounts
   }
 }
 let jobCounter = 1;
@@ -53,17 +53,16 @@ async function enqueueJobs(count, priority) {
 
 (async () => {
   // flushes the queue, starts the cron tick
-  await rlq.init({ enableLogs: false }, true);
-
+  await rlq.init({ enableLogs: true }, true);
 
   await rlq.defineLimitType('USER', {
     type: 'concurrent',
-    limit: 100
+    limit: 50
   });
 
   await rlq.defineLimitType('WORKSPACE', {
     type: 'concurrent',
-    limit: 200,
+    limit: 100,
   });
 
   await rlq.defineLimitType('ACCOUNT', {
@@ -72,20 +71,21 @@ async function enqueueJobs(count, priority) {
   });
 
 
-  await enqueueJobs(1000, 5);
-  await enqueueJobs(100, 4);
-  await enqueueJobs(100, 3);
-  await enqueueJobs(100, 2);
-  await enqueueJobs(100, 1);
-  await enqueueJobs(100, 1);
-  await enqueueJobs(100, 1);
-  await enqueueJobs(100, 1);
-  await enqueueJobs(100, 1);
-
+  // await enqueueJobs(10000, 5);
+  // await enqueueJobs(1000, 4);
+  // await enqueueJobs(1000, 3);
+  // await enqueueJobs(100, 2);
   // await enqueueJobs(100, 1);
-  // await enqueueJobs(10, 2);
-  // await enqueueJobs(10, 3);
+  // await enqueueJobs(100, 1);
+  // await enqueueJobs(100, 1);
+  await enqueueJobs(100, 1);
+  await enqueueJobs(10, 1);
+
+  // await enqueueJobs(100, 5);
   // await enqueueJobs(10, 4);
+  // await enqueueJobs(10, 3);
+  // await enqueueJobs(10, 2);
+  // await enqueueJobs(5, 1);
 
 
 
@@ -95,7 +95,10 @@ async function enqueueJobs(count, priority) {
   await rlq.createWorker(async (payload, metadata) => {
     console.log('>> PERFORMING JOB -', payload.desc);
     await sleep(3 + Math.random() * 3);
-  }, { maxConcurrent: 50 });
+  }, {
+    maxConcurrent: 100,
+    pullInterval: 500,
+  });
 
 })();
 

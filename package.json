@@ -16,13 +16,14 @@
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-typescript": "^6.1.0",
+    "@types/ioredis": "^4.17.6",
     "async": "^3.2.0",
     "ts-node": "^9.0.0",
     "tslib": "^2.0.3",
     "typescript": "^4.0.5"
   },
   "dependencies": {
-    "@types/ioredis": "^4.17.6",
+    "debug": "^4.2.0",
     "ioredis": "^4.19.1",
     "lodash": "^4.17.20",
     "lodash-es": "^4.17.15",

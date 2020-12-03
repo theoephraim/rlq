@@ -15,6 +15,9 @@ const rlq = new RateLimitQueue({
   await rlq.createWorker(async (payload, metadata) => {
     console.log('>> PERFORMING JOB -', payload.desc);
     await sleep(2 + Math.random() * 5);
-  }, { maxConcurrent: 500 });
+  }, {
+    maxConcurrent: 500,
+    pullInterval: 500,
+  });
 })();
 

@@ -12,21 +12,8 @@ Under the hood, it uses
 - [KeyDB](https://docs.keydb.dev/docs/intro/#what-is-keydb) which is basically fancy fork of redis
   - supports expiration of set members natively
   - supports CRON - to trigger a script natively
-  - claims to be faster and better at scaling
+  - claims to be faster and better at scaling (multithreaded)
+  - will soon support running a script on key expiry, which would simplify a lot of things too
 - [ModJS](https://github.com/JohnSully/ModJS) which is a redis/keydb module that lets us write custom scripts in JS instead of Lua
 
-- *might* support running a script on key expiry, which would simplify a lot of things too
 
-
-** to let us write custom logic in javascript instead of Lua**
-
-
-- KeyDB
-
-
-
-
-
-TODO
-- use rollup or some other tool to compile the modjs startup script
-  - or at least figure out how to require modules (lodash, etc)

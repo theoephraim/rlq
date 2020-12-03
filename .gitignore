@@ -1,5 +1,6 @@
-dist
-
+# TODO: add dist back to gitignore but include in published NPM module
+# dist
+ignore
 .DS_Store
 
 #### standard from github below

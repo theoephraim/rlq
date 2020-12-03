@@ -1,7 +1,12 @@
 version: '2'
 services:
   keydb-modjs:
-    image: eqalpha/modjs:keydb-latest
+    # TODO: swap back to latest when it is fixed
+    # this "test" image is from the keydb team after I encountered some crashes
+    # its just an issue with the docker image itself, not with keydb, so we should be ok!
+    image: eqalpha/modjs:test
+    # image: eqalpha/modjs:keydb-latest
+
     ports:
       # expose this on a different port to avoid conflict with any locally running redis
       - "6398:6379"
